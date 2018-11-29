@@ -23,7 +23,5 @@ defmodule LFAWeb.Router do
     pipe_through :api
 
     post "/events", EventController, :event
-    get "/message", MessageController, :message
-    get "/reactions", MessageController, :reactions
   end
 end
