@@ -18,7 +18,7 @@ defmodule LFA.Messages do
 
   """
   def list_messages do
-    Repo.all(from m in Message, order_by: m.ts, preload: [reactions: [:user]])
+    Repo.all(from m in Message, order_by: [desc: m.ts], preload: [reactions: [:user]])
   end
 
   @doc """

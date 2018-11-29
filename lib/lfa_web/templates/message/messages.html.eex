@@ -1,5 +1,5 @@
 <%= for message <- @messages do %>
-    <div><%= message.ts %>
+    <div><%= DateTime.from_unix!(elem(Integer.parse(message.ts), 0)) %>
     <%= for reaction <- message.reactions do %> 
         <%= reaction.rating %>
          <%= reaction.user.name %>
