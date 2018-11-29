@@ -2,9 +2,9 @@ defmodule LFAWeb.PageController do
   use LFAWeb, :controller
 
   def index(conn, _params) do
-    reactions = LFA.Messages.list_messages
-    IO.inspect(reactions)
+    messages = LFA.Messages.list_messages()
+    IO.inspect(messages)
 
-    render(conn, "index.html")
+    render(conn, "index.html", messages: messages)
   end
 end

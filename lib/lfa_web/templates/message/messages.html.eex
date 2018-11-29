@@ -1,0 +1,8 @@
+<%= for message <- @messages do %>
+    <div><%= message.ts %>
+    <%= for reaction <- message.reactions do %> 
+        <%= reaction.rating %>
+         <%= reaction.user.name %>
+    <% end %>
+</div>
+<% end %>

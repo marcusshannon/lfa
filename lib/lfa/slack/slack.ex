@@ -35,6 +35,7 @@ defmodule LFA.Slack do
       "eight" -> 8
       "nine" -> 9
       "keycap_ten" -> 10
+      _ -> nil
     end
   end
 
@@ -43,11 +44,11 @@ defmodule LFA.Slack do
   end
 
   def transform_reactions(reactions, message) do
-    Enum.reduce(reactions, [], fn reaction, acc ->
+    Enum.filter(reactions, fn reaction -> not is_nil(name_to_integer(reaction["name"])) end)
+    |> Enum.reduce([], fn reaction, acc ->
       [
         Enum.map(reaction["users"], fn slack_id ->
           user = LFA.Users.get_user_by_slack_id(slack_id)
-          IO.inspect(user)
 
           %Reaction{
             user_id: user.id,
@@ -63,6 +64,5 @@ defmodule LFA.Slack do
   end
 
   def work() do
-
   end
 end
