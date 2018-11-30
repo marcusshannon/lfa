@@ -5,9 +5,9 @@ defmodule LFA.SlackAPI do
         "https://slack.com/api/reactions.get",
         [
           {"Content-Type", "application/x-www-form-urlencoded"},
-          {"Authorization", "***REMOVED***"}
+          {"Authorization", Application.get_env(:lfa, :bot_api_key)}
         ],
-        params: [channel: "CDX58FBB6", timestamp: ts, full: true]
+        params: [channel: Application.get_env(:lfa, :channel), timestamp: ts, full: true]
       )
 
     Jason.decode!(response.body)
@@ -16,14 +16,14 @@ defmodule LFA.SlackAPI do
   def post_message() do
     data =
       Jason.encode!(%{
-        channel: "CDX58FBB6",
+        channel: Application.get_env(:lfa, :channel),
         text: "React with your LFA rating"
       })
 
     response =
       HTTPoison.post!("https://slack.com/api/chat.postMessage", data, [
         {"Content-Type", "application/json"},
-        {"Authorization", "***REMOVED***"}
+        {"Authorization", Application.get_env(:lfa, :bot_api_key)}
       ])
 
     Jason.decode!(response.body)
@@ -33,23 +33,8 @@ defmodule LFA.SlackAPI do
     response =
       HTTPoison.get!("https://slack.com/api/users.list", [
         {"Content-Type", "application/json"},
-        {"Authorization", "***REMOVED***"}
+        {"Authorization", Application.get_env(:lfa, :bot_api_key)}
       ])
-
-    Jason.decode!(response.body)
-  end
-
-  def conversation_history() do
-    response =
-      HTTPoison.get!(
-        "https://slack.com/api/conversations.history",
-        [
-          {"Content-Type", "application/json"},
-          {"Authorization",
-           "***REMOVED***"}
-        ],
-        params: [channel: "CDX58FBB6", limit: 10000]
-      )
 
     Jason.decode!(response.body)
   end
@@ -60,8 +45,7 @@ defmodule LFA.SlackAPI do
         "https://slack.com/api/search.messages",
         [
           {"Content-Type", "application/json"},
-          {"Authorization",
-           "***REMOVED***"}
+          {"Authorization", Application.get_env(:lfa, :bot_api_key)}
         ],
         params: [query: "from:@slackbot reminder: :lfa-1::lfa-2:", count: 100]
       )
@@ -75,7 +59,6 @@ defmodule LFA.SlackAPI do
     Enum.each(matches, fn message ->
       {:ok, message} = LFA.Messages.create_message(message)
       reactions = fetch_reactions(message.ts)
-      IO.inspect(reactions)
       reactions = LFA.Slack.transform_reactions(reactions["message"]["reactions"], message)
       Enum.each(reactions, fn reaction -> LFA.Repo.insert(reaction) end)
     end)
