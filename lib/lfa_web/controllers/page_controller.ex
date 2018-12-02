@@ -3,8 +3,8 @@ defmodule LFAWeb.PageController do
 
   def index(conn, _params) do
     messages = LFA.Messages.list_messages()
-    IO.inspect(messages)
+    data = Jason.encode!(LFA.Users.get_chart_data())
 
-    render(conn, "index.html", messages: messages)
+    render(conn, "index.html", messages: messages, data: data)
   end
 end

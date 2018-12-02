@@ -1,2 +1,2 @@
 <div>Welcome to LFA Zone</div>
-<%= render LFAWeb.MessageView, "messages.html", messages: @messages %>
+<%= render LFAWeb.MessageView, "messages.html", messages: @messages, data: @data %>

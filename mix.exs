@@ -45,7 +45,8 @@ defmodule LFA.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.4"},
       {:quantum, "~> 2.3"},
-      {:timex, "~> 3.4"}
+      {:timex, "~> 3.4"},
+      {:chartkick, "~> 0.3.0"}
     ]
   end
 

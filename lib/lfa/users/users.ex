@@ -105,4 +105,25 @@ defmodule LFA.Users do
   def get_user_by_slack_id(slack_id) do
     Repo.get_by!(User, slack_id: slack_id)
   end
+
+  def ts_to_date(ts) do
+    {unix, _} = Integer.parse(ts)
+
+    DateTime.from_unix!(unix)
+    |> DateTime.to_date()
+    |> Date.to_string()
+  end
+
+  def get_chart_data() do
+    Repo.all(User)
+    |> Repo.preload(reactions: [:message])
+    |> Enum.map(fn user ->
+      reactions =
+        Enum.reduce(user.reactions, %{}, fn reaction, acc ->
+          Map.put(acc, ts_to_date(reaction.message.ts), reaction.rating)
+        end)
+
+      %{name: user.name, data: reactions}
+    end)
+  end
 end

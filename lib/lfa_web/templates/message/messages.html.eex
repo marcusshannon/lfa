@@ -1,3 +1,6 @@
+<div>
+    <%= raw Chartkick.line_chart @data %>
+</div>
 <%= for message <- @messages do %>
     <div>
         <%= DateTime.from_unix!(elem(Integer.parse(message.ts), 0)) %>:
