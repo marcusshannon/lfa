@@ -3,7 +3,12 @@ defmodule LFAWeb.PageController do
 
   def index(conn, _params) do
     messages = LFA.Messages.list_messages()
-    data = Jason.encode!(LFA.Users.get_chart_data())
+    IO.inspect(messages)
+
+    data =
+      LFA.Users.get_chart_data()
+      |> Enum.filter(fn x -> not Enum.empty?(x.data) end)
+      |> Jason.encode!()
 
     render(conn, "index.html", messages: messages, data: data)
   end

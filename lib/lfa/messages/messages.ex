@@ -19,7 +19,18 @@ defmodule LFA.Messages do
   """
   def list_messages do
     reactions_query = from r in LFA.Reactions.Reaction, order_by: r.user_id, preload: [:user]
-    Repo.all(from m in Message, order_by: [desc: m.ts], preload: [reactions: ^reactions_query])
+
+    messages =
+      Repo.all(from m in Message, order_by: [desc: m.ts], preload: [reactions: ^reactions_query])
+
+    Enum.map(messages, fn message ->
+      reactions =
+        Enum.reduce(message.reactions, %{}, fn reaction, acc ->
+          Map.put(acc, reaction.user.name, reaction.rating)
+        end)
+
+      %{ts: message.ts, reactions: reactions}
+    end)
   end
 
   @doc """
