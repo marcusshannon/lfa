@@ -13,6 +13,7 @@
                 <th>John</th>
                 <th>Ryan</th>
                 <th>Yuvi</th>
+                <th>Kacper</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                 <td><%= message.reactions["John"] %></td>
                 <td><%= message.reactions["Ryan"] %></td>
                 <td><%= message.reactions["Yuvi"] %></td>
+                <td><%= message.reactions["Kacper"] %></td>
             </tr>
         <% end %>
         </tbody>
