@@ -21,6 +21,11 @@ defmodule LFA.Users do
     Repo.all(User)
   end
 
+  def users_map do
+    list_users
+    |> LFA.Utils.list_to_map()
+  end
+
   @doc """
   Gets a single user.
 

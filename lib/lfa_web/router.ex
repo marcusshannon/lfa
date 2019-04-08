@@ -17,11 +17,13 @@ defmodule LFAWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/react", PageController, :react
+
+    resources "/users", UserController
   end
 
   scope "/api", LFAWeb do
     pipe_through :api
-
     post "/events", EventController, :event
   end
 end

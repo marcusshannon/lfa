@@ -2,6 +2,8 @@ defmodule LFA.Reactions.Reaction do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [:id, :rating, :message_id, :user_id]}
+
   schema "reactions" do
     belongs_to :user, LFA.Users.User
     belongs_to :message, LFA.Messages.Message

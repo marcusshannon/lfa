@@ -17,6 +17,16 @@ defmodule LFA.Messages do
       [%Message{}, ...]
 
   """
+
+  def all_messages do
+    Repo.all(Message)
+  end
+
+  def messages_map do
+    all_messages
+    |> LFA.Utils.list_to_map()
+  end
+
   def list_messages do
     reactions_query = from r in LFA.Reactions.Reaction, order_by: r.user_id, preload: [:user]
 

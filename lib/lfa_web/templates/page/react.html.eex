@@ -1,0 +1,1 @@
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/index.bundle.js") %>"></script>
