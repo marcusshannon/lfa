@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useContext } from "react";
 import ChartJS from "chart.js";
-import { BackendContext } from "./App";
+import { data } from "./data";
 
 ChartJS.defaults.global.elements.line.borderWidth = 1;
 ChartJS.defaults.global.elements.point.radius = 0;
@@ -8,8 +8,6 @@ ChartJS.defaults.global.elements.point.radius = 0;
 function Chart() {
   const chartEl = useRef(null);
   const myChart = useRef(null);
-  const data = useContext(BackendContext);
-
   useEffect(() => {
     myChart.current = new ChartJS(chartEl.current, {
       type: "line",
@@ -55,9 +53,7 @@ function Chart() {
 
   return (
     <div style={{ height: "250px" }}>
-      <canvas id="chart" ref={chartEl}>
-        Chart root
-      </canvas>
+      <canvas id="chart" ref={chartEl} />
     </div>
   );
 }

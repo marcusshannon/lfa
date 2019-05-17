@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { BackendContext } from "./App";
+import React from "react";
 import styled from "styled-components";
+import { data } from "./data";
 
 const User = styled.div`
   font-family: sans-serif;
@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 
 function UserList() {
-  const { users } = useContext(BackendContext);
+  const { users } = data;
   return (
     <Container>
       {Object.entries(users).map(([key, user]) => (
