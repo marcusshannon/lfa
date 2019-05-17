@@ -17,6 +17,7 @@ defmodule LFAWeb.PageController do
     messages = LFA.Messages.messages_map()
 
     raw_reactions = LFA.Reactions.list_reactions()
+    raw_messages = LFA.Messages.list_messages()
 
     reactions =
       LFA.Reactions.list_reactions()
@@ -49,8 +50,9 @@ defmodule LFAWeb.PageController do
         reactions: reactions,
         messages: messages,
         raw_reactions: raw_reactions,
+        raw_messages: raw_messages,
         token: get_csrf_token()
       }
-    ) 
+    )
   end
 end
