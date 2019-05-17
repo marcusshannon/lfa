@@ -16,6 +16,8 @@ defmodule LFAWeb.PageController do
     users = LFA.Users.users_map()
     messages = LFA.Messages.messages_map()
 
+    raw_reactions = LFA.Reactions.list_reactions()
+
     reactions =
       LFA.Reactions.list_reactions()
       # |> Enum.filter(fn reaction -> reaction.user_id == 2 or reaction.user_id == 6 end)
@@ -46,8 +48,9 @@ defmodule LFAWeb.PageController do
         users: users,
         reactions: reactions,
         messages: messages,
+        raw_reactions: raw_reactions,
         token: get_csrf_token()
       }
-    )
+    ) 
   end
 end
