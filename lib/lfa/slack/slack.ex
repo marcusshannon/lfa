@@ -2,12 +2,9 @@ defmodule LFA.Slack do
   import Ecto.Query, warn: false
   alias LFA.Repo
   alias Ecto.Multi
-
   alias LFA.Messages.Message
   alias LFA.Messages
-
   alias LFA.Reactions.Reaction
-
   alias LFA.SlackAPI
 
   def update_reactions(ts) do
@@ -61,8 +58,5 @@ defmodule LFA.Slack do
     end)
     |> List.flatten()
     |> Enum.uniq_by(fn %{:user_id => user_id} -> user_id end)
-  end
-
-  def work() do
   end
 end

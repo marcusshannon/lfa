@@ -10,7 +10,6 @@ defmodule LFA.Reactions.Reaction do
     timestamps()
   end
 
-  @doc false
   def changeset(reaction, attrs) do
     reaction
     |> change(attrs)

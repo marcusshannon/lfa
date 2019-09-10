@@ -3,13 +3,21 @@ defmodule LFAWeb.PageController do
 
   def index(conn, _params) do
     messages = LFA.Messages.list_messages()
-    IO.inspect(messages)
 
     data =
-      LFA.Users.get_chart_data()
-      |> Enum.filter(fn x -> not Enum.empty?(x.data) end)
+      LFA.GraphData.get_past_month_data()
       |> Jason.encode!()
 
     render(conn, "index.html", messages: messages, data: data)
+  end
+
+  def user(conn, %{"user_name" => user_name}) do
+    user = LFA.Users.get_user_by_name!(user_name)
+
+    data =
+      LFA.GraphData.get_data_by_user(user.id, user.name)
+      |> Jason.encode!()
+
+    render(conn, "user.html", name: user.name, data: data)
   end
 end

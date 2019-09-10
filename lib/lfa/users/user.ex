@@ -10,7 +10,6 @@ defmodule LFA.Users.User do
     timestamps()
   end
 
-  @doc false
   def changeset(user, attrs) do
     user
     |> change(attrs)

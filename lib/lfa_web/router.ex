@@ -17,6 +17,7 @@ defmodule LFAWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/zones/:user_name", PageController, :user
   end
 
   scope "/api", LFAWeb do

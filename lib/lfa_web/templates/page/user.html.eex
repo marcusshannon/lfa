@@ -1,0 +1,5 @@
+<div class="text-xl text-center my-4 font-bold"><%= @name %> Zone</div>
+<div class="border rounded shadow p-4 my-4 bg-white">
+    <div class="text-xl mb-4">Graph Zone</div>
+    <%= raw Chartkick.line_chart @data, min: 0, max: 10, span_gaps: true, legend: false %>
+</div>

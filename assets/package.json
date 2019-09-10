@@ -1,26 +1,14 @@
 {
-  "repository": {},
-  "license": "MIT",
-  "scripts": {
-    "deploy": "webpack --mode production",
-    "watch": "webpack --mode development --watch"
-  },
-  "dependencies": {
-    "phoenix": "file:../deps/phoenix",
-    "phoenix_html": "file:../deps/phoenix_html"
-  },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-loader": "^8.0.0",
-    "copy-webpack-plugin": "^4.5.0",
-    "css-loader": "^0.28.10",
-    "mini-css-extract-plugin": "^0.4.0",
-    "optimize-css-assets-webpack-plugin": "^4.0.0",
-    "postcss-loader": "^3.0.0",
-    "tailwindcss": "^0.7.2",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "4.4.0",
-    "webpack-cli": "^2.0.10"
+    "clean-css": "^4.2.1",
+    "clean-css-cli": "^4.3.0",
+    "purgecss": "^1.4.0",
+    "tailwindcss": "^1.1.2"
+  },
+  "scripts": {
+    "build-css": "npx tailwind build css/app.css -o ../priv/static/css/app.css",
+    "purge-css": "npx purgecss --css ../priv/static/css/app.css --content ../lib/lfa_web/templates/**/* -o ../priv/static/css/",
+    "clean-css": "npx cleancss -o ../priv/static/css/app.min.css ../priv/static/css/app.css",
+    "build": "yarn build-css && yarn purge-css && yarn clean-css && cp -r static/ ../priv/static/"
   }
 }

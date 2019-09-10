@@ -9,7 +9,6 @@ defmodule LFA.Messages.Message do
     timestamps()
   end
 
-  @doc false
   def changeset(message, attrs) do
     message
     |> cast(attrs, [:ts])
