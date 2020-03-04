@@ -43,7 +43,7 @@ defmodule LFA.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:httpoison, "~> 1.4"},
+      {:httpoison, "~> 1.6"},
       {:quantum, "~> 2.3"},
       {:timex, "~> 3.4"},
       {:chartkick, "~> 0.3.0"}
