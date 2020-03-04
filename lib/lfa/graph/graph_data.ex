@@ -48,4 +48,56 @@ defmodule LFA.GraphData do
 
     [%{name: name, data: data}]
   end
+
+  defp check_next_date([first | _] = date_list) do
+    if Date.diff(Date.utc_today(), first) < 2 do
+      check_next_date(date_list, 1)
+    else
+      0
+    end
+  end
+
+  defp check_next_date(_) do
+    0
+  end
+
+  defp check_next_date([first, second | tail], acc) do
+    if Date.diff(first, second) == 1 do
+      check_next_date([second | tail], acc + 1)
+    else
+      acc
+    end
+  end
+
+  defp check_next_date(_, acc) do
+    acc
+  end
+
+  def get_streak_by_user(user_id) do
+    date_list =
+      Repo.all(
+        from r in Reaction,
+          join: m in assoc(r, :message),
+          where: r.user_id == ^user_id,
+          order_by: [desc: m.ts],
+          select: m.ts
+      )
+      |> Enum.map(fn ts ->
+        {unix, _} = Integer.parse(ts)
+
+        DateTime.from_unix!(unix)
+        |> DateTime.to_date()
+      end)
+
+    check_next_date(date_list)
+  end
+
+  def get_user_average(user_id) do
+    Repo.all(
+      from r in Reaction,
+        join: m in assoc(r, :message),
+        where: r.user_id == ^user_id,
+        select: avg(r.rating)
+    )
+  end
 end

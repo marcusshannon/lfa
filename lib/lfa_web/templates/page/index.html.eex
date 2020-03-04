@@ -1,37 +1,38 @@
 <div class="text-xl text-center my-4 font-bold">LFA Zone</div>
 <div class="border rounded shadow p-4 my-4 bg-white">
-    <div class="text-xl mb-4">Graph Zone</div>
-    <%= raw Chartkick.line_chart @data, min: 0, max: 10, span_gaps: true %>
+  <div class="text-xl mb-4">Graph Zone</div>
+  <%= raw Chartkick.line_chart @data, min: 0, max: 10, span_gaps: true %>
 </div>
 <div class="border rounded shadow p-4 my-4 bg-white">
-    <div class="text-xl mb-4">Table Zone</div>
-    <table class="w-full font-mono" cellpadding="8px">
-        <thead>
-            <tr class="text-xs bg-grey-lighter text-right text-grey-darker uppercase">
-                <th class="text-center">Date</th>
-                <th><%= link "Marcus", to: "/zones/marcus" %></th>
-                <th><%= link "Camden", to: "/zones/camden" %></th>
-                <th><%= link "John", to: "/zones/john" %></th>
-                <th><%= link "Ryan", to: "/zones/ryan" %></th>
-                <th><%= link "Yuvi", to: "/zones/yuvi" %></th>
-                <th><%= link "Kacper", to: "/zones/kacper" %></th>
-                <th><%= link "Chris", to: "/zones/chris" %></th>
-            </tr>
-        </thead>
-        <tbody>
-            <%= for message <- @messages do %>
-                <tr class="pt-3 border-t border-grey-lightest text-right font-mono">
-                    <td class="text-center"><%= DateTime.to_date(DateTime.from_unix!(elem(Integer.parse(message.ts), 0))) %></td>
-                    <td><%= message.reactions["Marcus"] %></td>
-                    <td><%= message.reactions["Camden"] %></td>
-                    <td><%= message.reactions["John"] %></td>
-                    <td><%= message.reactions["Ryan"] %></td>
-                    <td><%= message.reactions["Yuvi"] %></td>
-                    <td><%= message.reactions["Kacper"] %></td>
-                    <td><%= message.reactions["Chris"] %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+  <div class="text-xl mb-4">Table Zone</div>
+  <table class="w-full font-mono" cellpadding="8px">
+    <thead>
+      <tr class="text-xs bg-grey-lighter text-right text-grey-darker uppercase">
+        <th class="text-center">Date</th>
+        <th><%= link "Marcus", to: "/zones/marcus" %></th>
+        <th><%= link "Camden", to: "/zones/camden" %></th>
+        <th><%= link "John", to: "/zones/john" %></th>
+        <th><%= link "Ryan", to: "/zones/ryan" %></th>
+        <th><%= link "Yuvi", to: "/zones/yuvi" %></th>
+        <th><%= link "Kacper", to: "/zones/kacper" %></th>
+        <th><%= link "Chris", to: "/zones/chris" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for message <- @messages do %>
+        <tr class="pt-3 border-t border-grey-lightest text-right font-mono">
+          <td class="text-center">
+            <%= DateTime.to_date(DateTime.from_unix!(elem(Integer.parse(message.ts), 0))) %>
+          </td>
+          <td><%= message.reactions["Marcus"] %></td>
+          <td><%= message.reactions["Camden"] %></td>
+          <td><%= message.reactions["John"] %></td>
+          <td><%= message.reactions["Ryan"] %></td>
+          <td><%= message.reactions["Yuvi"] %></td>
+          <td><%= message.reactions["Kacper"] %></td>
+          <td><%= message.reactions["Chris"] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-

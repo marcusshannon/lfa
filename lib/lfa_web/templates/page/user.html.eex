@@ -1,5 +1,12 @@
 <div class="text-xl text-center my-4 font-bold"><%= @name %> Zone</div>
 <div class="border rounded shadow p-4 my-4 bg-white">
-    <div class="text-xl mb-4">Graph Zone</div>
-    <%= raw Chartkick.line_chart @data, min: 0, max: 10, span_gaps: true, legend: false %>
+  <div class="text-xl mb-4">Graph Zone</div>
+  <%= raw Chartkick.line_chart @data, min: 0, max: 10, span_gaps: true, legend: false %>
+</div>
+<div class="border rounded shadow p-4 my-4 bg-white">
+  <div class="text-xl mb-4">Stat Zone</div>
+  <div class="text-center mb-4">Streak</div>
+  <div class="text-center text-5xl mb-16">🔥<%= @streak %>🔥</div>
+  <div class="text-center mb-4">Average</div>
+  <div class="text-center text-5xl mb-4"><%= @average %></div>
 </div>

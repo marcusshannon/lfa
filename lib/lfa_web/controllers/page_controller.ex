@@ -18,6 +18,17 @@ defmodule LFAWeb.PageController do
       LFA.GraphData.get_data_by_user(user.id, user.name)
       |> Jason.encode!()
 
-    render(conn, "user.html", name: user.name, data: data)
+    streak = LFA.GraphData.get_streak_by_user(user.id)
+
+    [average_decimal] = LFA.GraphData.get_user_average(user.id)
+
+
+
+    average = case average_decimal do
+      nil -> 0
+      non_zero -> Decimal.to_float(average_decimal) |> Float.floor(4)
+    end
+
+    render(conn, "user.html", name: user.name, data: data, streak: streak, average: average)
   end
 end
