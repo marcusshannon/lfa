@@ -3,7 +3,6 @@ defmodule LFA.Reactions do
   alias LFA.Repo
 
   alias LFA.Reactions.Reaction
-  alias LFA.Messages.Message
 
   def list_reactions do
     Repo.all(Reaction)

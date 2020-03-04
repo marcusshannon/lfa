@@ -1,8 +1,6 @@
 defmodule LFA.Slack do
   import Ecto.Query, warn: false
   alias LFA.Repo
-  alias Ecto.Multi
-  alias LFA.Messages.Message
   alias LFA.Messages
   alias LFA.Reactions.Reaction
   alias LFA.SlackAPI
@@ -36,7 +34,7 @@ defmodule LFA.Slack do
     end
   end
 
-  def transform_reactions(reactions, message) when is_nil(reactions) do
+  def transform_reactions(reactions, _) when is_nil(reactions) do
     []
   end
 
