@@ -9,6 +9,6 @@
     "build-css": "npx tailwind build css/app.css -o ../priv/static/css/app.css",
     "purge-css": "npx purgecss --css ../priv/static/css/app.css --content ../lib/lfa_web/templates/**/* -o ../priv/static/css/",
     "clean-css": "npx cleancss -o ../priv/static/css/app.min.css ../priv/static/css/app.css",
-    "build": "yarn build-css && yarn purge-css && yarn clean-css && cp -r static/ ../priv/static/"
+    "build": "npm run build-css && npm run purge-css && npm run clean-css && cp -r static/ ../priv/static/"
   }
 }
