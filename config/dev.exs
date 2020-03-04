@@ -10,15 +10,7 @@ config :lfa, LFAWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
-  check_origin: false,
-  watchers: [
-    npx: [
-      "npx",
-      "yarn",
-      "build",
-      cd: "assets/"
-    ]
-  ]
+  check_origin: false
 
 # ## SSL Support
 #

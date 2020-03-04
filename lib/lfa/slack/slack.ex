@@ -36,7 +36,7 @@ defmodule LFA.Slack do
     end
   end
 
-  def transform_reactions(reactions, message) when is_nil(reactions) do
+  def transform_reactions(reactions, _message) when is_nil(reactions) do
     []
   end
 

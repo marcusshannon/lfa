@@ -41,6 +41,7 @@ defmodule LFAWeb do
 
       import LFAWeb.ErrorHelpers
       import LFAWeb.Gettext
+      import LFAWeb.ComponentHelpers
       alias LFAWeb.Router.Helpers, as: Routes
     end
   end

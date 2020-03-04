@@ -1,0 +1,24 @@
+  <%= component "table_data_left.html" do %>
+    01/01/2020
+  <% end %>
+  <%= component "table_data_right.html" do %>
+    5
+  <% end %>
+  <%= component "table_data_right.html" do %>
+    5
+  <% end %>
+  <%= component "table_data_right.html" do %>
+    5
+  <% end %>
+  <%= component "table_data_right.html" do %>
+    5
+  <% end %>
+  <%= component "table_data_right.html" do %>
+    5
+  <% end %>
+  <%= component "table_data_right.html" do %>
+    5
+  <% end %>
+  <%= component "table_data_right.html" do %>
+    5
+  <% end %>

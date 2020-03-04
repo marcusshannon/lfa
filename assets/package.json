@@ -1,14 +1,15 @@
 {
   "devDependencies": {
-    "clean-css": "^4.2.1",
-    "clean-css-cli": "^4.3.0",
     "purgecss": "^1.4.0",
-    "tailwindcss": "^1.1.2"
+    "@tailwindcss/ui": "^0.1.3",
+    "clean-css-cli": "^4.3.0",
+    "tailwindcss": "^1.2.0"
   },
   "scripts": {
     "build-css": "npx tailwind build css/app.css -o ../priv/static/css/app.css",
     "purge-css": "npx purgecss --css ../priv/static/css/app.css --content ../lib/lfa_web/templates/**/* -o ../priv/static/css/",
     "clean-css": "npx cleancss -o ../priv/static/css/app.min.css ../priv/static/css/app.css",
-    "build": "yarn build-css && yarn purge-css && yarn clean-css && cp -r static/ ../priv/static/"
+    "copy-static": "cp -r static/ ../priv/static/",
+    "build": "npm run build-css && npm run copy-static"
   }
 }

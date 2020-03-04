@@ -1,0 +1,3 @@
+<%= component "content_container.html", class: "px-4" do %>
+  <%= assigns[:do] %>
+<% end %>

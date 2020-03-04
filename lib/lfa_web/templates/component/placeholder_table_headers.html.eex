@@ -1,0 +1,26 @@
+<tr>
+  <%= component "table_header_left.html" do %>
+    Date
+  <% end %>
+  <%= component "table_header_right.html" do %>
+    Camden
+  <% end %>
+  <%= component "table_header_right.html" do %>
+    Chris
+  <% end %>
+  <%= component "table_header_right.html" do %>
+    John
+  <% end %>
+  <%= component "table_header_right.html" do %>
+    Kacper
+  <% end %>
+  <%= component "table_header_right.html" do %>
+    Marcus
+  <% end %>
+  <%= component "table_header_right.html" do %>
+    Ryan
+  <% end %>
+  <%= component "table_header_right.html" do %>
+    Yuvi
+  <% end %>
+</tr>

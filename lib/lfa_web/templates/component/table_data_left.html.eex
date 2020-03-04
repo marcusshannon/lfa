@@ -1,0 +1,3 @@
+<%= component "table_data.html", class: "text-left" do %>
+ <%= assigns[:do] %>
+<% end %>

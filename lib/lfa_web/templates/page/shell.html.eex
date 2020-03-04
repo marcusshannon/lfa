@@ -1,0 +1,13 @@
+<%= component "sidebar_layout.html", data: @data do %>
+  <%= component "content_container_padded.html" do %>
+    <%= component "header_with_actions.html" %>
+  <% end %>
+  <%= component "spacer.html" %>
+  <%= component "content_container.html" do %>
+    <%= component "graph.html", data: @data%>
+  <% end %>
+  <%= component "spacer.html" %>
+  <%= component "content_container.html", class: "overflow-x-scroll" do %>
+    <%= component "table.html", table_headers: component("placeholder_table_headers.html"), table_rows: component("placeholder_table_rows.html") %>
+  <% end %>
+<% end %>

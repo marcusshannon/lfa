@@ -1,0 +1,5 @@
+<div class="bg-white shadow overflow-hidden sm:rounded-md">
+  <div class="p-4">
+    <%= raw Chartkick.line_chart @data, min: 0, max: 10, span_gaps: true %>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+<tr class="bg-white">
+  <%= assigns[:do] %>
+</tr>

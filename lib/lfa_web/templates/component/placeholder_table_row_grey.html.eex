@@ -1,0 +1,3 @@
+<%= component "table_row_grey.html" do %>
+  <%= component "placeholder_table_data.html" %>
+<% end %>

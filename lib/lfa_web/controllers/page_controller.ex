@@ -20,4 +20,24 @@ defmodule LFAWeb.PageController do
 
     render(conn, "user.html", name: user.name, data: data)
   end
+
+  def shell(conn, %{"year" => year, "month" => month}) do
+    messages = LFA.Messages.list_messages()
+
+    data =
+      LFA.GraphData.get_past_month_data()
+      |> Jason.encode!()
+
+    render(conn, "shell.html", messages: messages, data: data)
+  end
+
+  def shell(conn, _) do
+    messages = LFA.Messages.list_messages()
+
+    data =
+      LFA.GraphData.get_past_month_data()
+      |> Jason.encode!()
+
+    render(conn, "shell.html", messages: messages, data: data)
+  end
 end

@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>LFA</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.min.css") %>">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.js"></script>
   </head>
-  <body class="font-sans container mx-auto text-black">
+  <body>
     <%= render @view_module, @view_template, assigns %>
   </body>
 </html>
