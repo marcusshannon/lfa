@@ -26,7 +26,7 @@ defmodule LFAWeb.PageController do
 
     average = case average_decimal do
       nil -> 0
-      non_zero -> Decimal.to_float(average_decimal) |> Float.floor(4)
+      _ -> Decimal.to_float(average_decimal) |> Float.floor(4)
     end
 
     render(conn, "user.html", name: user.name, data: data, streak: streak, average: average)
