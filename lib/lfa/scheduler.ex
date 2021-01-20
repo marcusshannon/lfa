@@ -1,3 +1,3 @@
 defmodule LFA.Scheduler do
-  use Quantum.Scheduler, otp_app: :lfa
+  use Quantum, otp_app: :lfa
 end

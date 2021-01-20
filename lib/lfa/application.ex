@@ -10,6 +10,8 @@ defmodule LFA.Application do
     children = [
       # Start the Ecto repository
       LFA.Repo,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: LFA.PubSub},
       # Start the endpoint when the application starts
       LFAWeb.Endpoint,
       # Starts a worker by calling: LFA.Worker.start_link(arg)

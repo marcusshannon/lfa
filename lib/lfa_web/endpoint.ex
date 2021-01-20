@@ -1,6 +1,15 @@
 defmodule LFAWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :lfa
 
+  # The session will be stored in the cookie and signed,
+  # this means its contents can be read but not tampered with.
+  # Set :encryption_salt if you would also like to encrypt it.
+  @session_options [
+    store: :cookie,
+    key: "_lfa_key",
+    signing_salt: "U4u3ima6"
+  ]
+
   socket "/socket", LFAWeb.UserSocket,
     websocket: true,
     longpoll: false
@@ -21,10 +30,10 @@ defmodule LFAWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :lfa
   end
 
   plug Plug.RequestId
-  plug Plug.Logger
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
@@ -33,14 +42,6 @@ defmodule LFAWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  # The session will be stored in the cookie and signed,
-  # this means its contents can be read but not tampered with.
-  # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_lfa_key",
-    signing_salt: "U4u3ima6"
-
+  plug Plug.Session, @session_options
   plug LFAWeb.Router
 end
