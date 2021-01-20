@@ -42,3 +42,5 @@ npm-debug.log
 /config/*.secret.exs
 
 /.elixir_ls
+
+.DS_Store

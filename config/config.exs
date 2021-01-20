@@ -30,7 +30,7 @@ config :elixir, :time_zone_database, Tzdata.TimeZoneDatabase
 config :lfa, LFA.Scheduler,
   timezone: "America/New_York",
   jobs: [
-    {"* * * * *", {LFA.Poster, :send, []}}
+    {"0 15 * * *", {LFA.Poster, :send, []}}
   ]
 
 # Import environment specific config. This must remain at the bottom
